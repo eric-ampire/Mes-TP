@@ -1,19 +1,15 @@
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import entities.User;
 
-import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import entities.User;
 
 public class Main {
 
-
     public static void main(String...args) throws Exception {
         User user = new User("Eric", "Adfd", 232);
-        user.delete();
+        User anotherUser = new User("Ampire", "Adfdf", 12);
+
         user.insert();
+        user.delete();
+        user.update(anotherUser);
 
         User.showAll();
     }

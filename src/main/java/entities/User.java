@@ -71,6 +71,19 @@ public class User implements Serializable {
         rewriteTheFile(users);
     }
 
+    public boolean update(User newUser) throws Exception {
+        oldUsers = getJsonContent(file);
+
+        if (oldUsers.contains(this)) {
+            int indexOldUser = oldUsers.indexOf(this);
+            oldUsers.add(indexOldUser, newUser);
+
+            return true;
+        }
+
+        return false;
+    }
+
     public void insert() throws Exception {
         oldUsers = getJsonContent(file);
 
@@ -83,7 +96,7 @@ public class User implements Serializable {
         rewriteTheFile(users);
     }
 
-    public static void showAll() {
+    public static void showAll() throws Exception {
         oldUsers = getJsonContent(file);
         for (User user: oldUsers) {
             System.out.println(user.toString());
